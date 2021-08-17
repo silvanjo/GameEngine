@@ -2,13 +2,12 @@
 
 #include <iostream>
 
-Mesh::Mesh(glm::vec3 position) :
-	Entity(position)
+Mesh::Mesh()
 {
+
 }
 
-Mesh::Mesh(std::vector<Vertex>& vertices, std::vector<GLuint>& indices, std::vector<std::shared_ptr<Texture>>& textures, glm::vec3 position) : 
-	Entity(position)
+Mesh::Mesh(std::vector<Vertex>& vertices, std::vector<GLuint>& indices, std::vector<std::shared_ptr<Texture>>& textures)
 {
 
 	Mesh::vertices = vertices;
@@ -19,8 +18,7 @@ Mesh::Mesh(std::vector<Vertex>& vertices, std::vector<GLuint>& indices, std::vec
 
 }
 
-Mesh::Mesh(std::vector<Vertex>& vertices, std::vector<GLuint>& indices, std::vector<std::shared_ptr<Texture>>&& textures, glm::vec3 position) :
-	Entity(position)
+Mesh::Mesh(std::vector<Vertex>& vertices, std::vector<GLuint>& indices, std::vector<std::shared_ptr<Texture>>&& textures)
 {
 
 	Mesh::vertices = vertices;

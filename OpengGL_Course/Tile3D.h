@@ -1,12 +1,13 @@
 #pragma once
 
-#include "Mesh.h"
+#include "Model.h"
 
-class Tile3D : public Mesh
+class Tile3D : public Model
 {
 public:
 	Tile3D(glm::vec3 position, std::vector<std::shared_ptr<Texture>>& textures);
 	Tile3D(glm::vec3 position, std::vector<std::shared_ptr<Texture>>&& textures);
 
-	void createMesh();
+private:
+	void createMesh(std::vector<std::shared_ptr<Texture>>& textures);
 };

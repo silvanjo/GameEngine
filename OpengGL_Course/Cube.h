@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Mesh.h"
+#include "Model.h"
 
-class Cube : public Mesh
+class Cube : public Model
 {
 
 public:

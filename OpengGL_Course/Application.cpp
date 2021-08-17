@@ -1,8 +1,7 @@
 #include "Application.h"
 
-Application::Application() 
-	: window(1600, 1600, "OpenGL"),
-	backpack((char*) "Models/backpack/backpack.obj", glm::vec3(2.f, 2.f, 2.f))
+Application::Application() : 
+	window(1600, 1600, "OpenGL")
 {
 	
 }
@@ -13,6 +12,8 @@ void Application::Start() {
 
 	Application::textures.insert(std::pair<TEXTURE_TYPES, std::shared_ptr<Texture>>(TEXTURE_TYPES::CONTAINER, std::make_shared<Texture>("Textures/container2.png", "texture_diffuse")));
 	Application::textures.insert(std::pair<TEXTURE_TYPES, std::shared_ptr<Texture>>(TEXTURE_TYPES::CONTAINER_SPECULAR, std::make_shared<Texture>("Textures/container2_specular.png", "texture_specular")));
+
+	Application::entities.push_back(std::make_shared<Model>((char*) "Models/backpack/backpack.obj", glm::vec3(2.f, 2.f, 2.f)));
 
 	Application::entities.push_back(std::make_shared<Tile3D>(glm::vec3(0.f, -1.f, 0.f), 
 		
@@ -56,8 +57,6 @@ void Application::Start() {
 			Renderer::DrawElements(*entity, *Application::shaders.at(0));
 
 		}
-
-		Renderer::DrawElements(Application::backpack, *Application::shaders.at(0));
 
 		// ---------------
 

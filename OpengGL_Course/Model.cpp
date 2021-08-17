@@ -2,6 +2,12 @@
 
 #include <iostream>
 
+Model::Model(glm::vec3 position) :
+	Entity(position)
+{
+
+}
+
 Model::Model(char* path, glm::vec3 position) :
 	Entity(position)
 {
@@ -109,7 +115,7 @@ std::shared_ptr<Mesh> Model::processMesh(aiMesh *mesh, const aiScene *scene) {
 	textures.insert(textures.end(), specularMaps.begin(), specularMaps.end());
 
 	// return a mesh object created from the extracted mesh data
-	return std::make_shared<Mesh>(vertices, indices, textures, glm::vec3(0.f, 0.f, 0.f));
+	return std::make_shared<Mesh>(vertices, indices, textures);
 }
 
 std::vector<std::shared_ptr<Texture>> Model::loadMaterialTextures(aiMaterial *mat, aiTextureType type, std::string typeName) {

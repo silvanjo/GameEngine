@@ -24,6 +24,7 @@ enum TEXTURE_TYPES {
 
 class Application
 {
+
 public:
 	Application();
 
@@ -34,8 +35,7 @@ private:
 	Camera camera;
 
 	std::vector<std::shared_ptr<Shader>> shaders;
-	std::vector<std::shared_ptr<Mesh>> entities;
+	std::vector<std::shared_ptr<Entity>> entities;
 	std::map<TEXTURE_TYPES, std::shared_ptr<Texture>> textures;
 
-	Model backpack;
 };

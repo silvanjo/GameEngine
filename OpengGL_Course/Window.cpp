@@ -25,15 +25,6 @@ Window::Window(int width, int height, const std::string& title) :
 	
 	glEnable(GL_DEPTH_TEST);
 
-	glDepthFunc(GL_LESS);
-	glEnable(GL_STENCIL_TEST);
-	glStencilFunc(GL_NOTEQUAL, 1, 0xFF);
-	// glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
-	
-	glEnable(GL_BLEND);
-	
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
 	// Print the current OpenGl version
 	std::cout << "Version: " << glGetString(GL_VERSION) << std::endl;
 }

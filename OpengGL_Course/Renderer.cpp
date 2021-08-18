@@ -20,8 +20,7 @@ void Renderer::DrawElements(Entity& entity, Shader& shader) {
 
 		shader.Bind();
 
-			glm::mat4 model = glm::translate(glm::mat4(1.f), entity.position);
-			shader.SetUniformMat4f("model", model);
+			shader.SetUniformMat4f("model", entity.model);
 
 			unsigned int numDiffuse = 0;
 			unsigned int numSpecular = 0;

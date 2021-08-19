@@ -1,0 +1,31 @@
+﻿  Application.cpp
+c:\users\silva\desktop\gameengine\gameengine\application.cpp(31): warning C4244: "=": Konvertierung von "double" in "float", möglicher Datenverlust
+  Camera.cpp
+c:\users\silva\desktop\gameengine\gameengine\camera.cpp(72): warning C4244: "=": Konvertierung von "double" in "float", möglicher Datenverlust
+c:\users\silva\desktop\gameengine\gameengine\camera.cpp(73): warning C4244: "=": Konvertierung von "double" in "float", möglicher Datenverlust
+c:\users\silva\desktop\gameengine\gameengine\camera.cpp(77): warning C4244: "Initialisierung": Konvertierung von "double" in "float", möglicher Datenverlust
+c:\users\silva\desktop\gameengine\gameengine\camera.cpp(78): warning C4244: "Initialisierung": Konvertierung von "double" in "float", möglicher Datenverlust
+c:\users\silva\desktop\gameengine\gameengine\camera.cpp(79): warning C4244: "=": Konvertierung von "double" in "float", möglicher Datenverlust
+c:\users\silva\desktop\gameengine\gameengine\camera.cpp(80): warning C4244: "=": Konvertierung von "double" in "float", möglicher Datenverlust
+  Cube.cpp
+  EBO.cpp
+  Entity.cpp
+  main.cpp
+  Mesh.cpp
+  Model.cpp
+  Renderer.cpp
+c:\users\silva\desktop\gameengine\gameengine\renderer.cpp(18): warning C4018: "<": Konflikt zwischen "signed" und "unsigned"
+  Shader.cpp
+c:\users\silva\desktop\gameengine\gameengine\shader.cpp(153): warning C4305: "Argument": Verkürzung von "double" in "float"
+c:\users\silva\desktop\gameengine\gameengine\shader.cpp(154): warning C4305: "Argument": Verkürzung von "double" in "float"
+  stb_image.cpp
+  Texture.cpp
+  Tile3D.cpp
+  VAO.cpp
+  VBO.cpp
+  Window.cpp
+  Code wird generiert...
+LINK : warning LNK4098: Standardbibliothek "MSVCRT" steht in Konflikt mit anderen Bibliotheken; /NODEFAULTLIB:Bibliothek verwenden.
+LINK : warning LNK4098: Standardbibliothek "LIBCMT" steht in Konflikt mit anderen Bibliotheken; /NODEFAULTLIB:Bibliothek verwenden.
+glew32s.lib(glew.obj) : warning LNK4099: PDB "vc120.pdb" wurde nicht mit "glew32s.lib(glew.obj)" oder an "C:\Users\silva\Desktop\GameEngine\Debug\vc120.pdb" gefunden; Objekt wird verknüpft, als ob keine Debuginformationen vorhanden wären.
+  GameEngine.vcxproj -> C:\Users\silva\Desktop\GameEngine\Debug\GameEngine.exe

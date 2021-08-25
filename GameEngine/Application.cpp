@@ -35,19 +35,13 @@ void Application::Start() {
 	);
 	grassTile.SetScale(glm::vec3(0.2f, 0.2f, 0.2f));
 	grassTile.Rotate(90.f, glm::vec3(1.f, 0.f, 0.f));
-	std::vector<glm::vec2> grassPosition =
-	{
-		{((float) (rand() % 10) + (float) (rand() % 10) / 10), ((float) (rand() % 10) + (float) (rand() % 10) / 10)},
-		{((float) (rand() % 10) + (float) (rand() % 10) / 10), ((float) (rand() % 10) + (float) (rand() % 10) / 10)},
-		{((float) (rand() % 10) + (float) (rand() % 10) / 10), ((float) (rand() % 10) + (float) (rand() % 10) / 10)},
-		{((float) (rand() % 10) + (float) (rand() % 10) / 10), ((float) (rand() % 10) + (float) (rand() % 10) / 10)},
-		{((float) (rand() % 10) + (float) (rand() % 10) / 10), ((float) (rand() % 10) + (float) (rand() % 10) / 10)},
-		{((float) (rand() % 10) + (float) (rand() % 10) / 10), ((float) (rand() % 10) + (float) (rand() % 10) / 10)},
-		{((float) (rand() % 10) + (float) (rand() % 10) / 10), ((float) (rand() % 10) + (float) (rand() % 10) / 10)},
-		{((float) (rand() % 10) + (float) (rand() % 10) / 10), ((float) (rand() % 10) + (float) (rand() % 10) / 10)},
-		{((float) (rand() % 10) + (float) (rand() % 10) / 10), ((float) (rand() % 10) + (float) (rand() % 10) / 10)},
-		{((float) (rand() % 10) + (float) (rand() % 10) / 10), ((float) (rand() % 10) + (float) (rand() % 10) / 10)}
-	};
+	std::vector<glm::vec2> grassPosition;
+
+	for (int i = 0; i < 10; i++) {
+
+		grassPosition.push_back({ ((float)(rand() % 10) + (float)(rand() % 10) / 10), ((float)(rand() % 10) + (float)(rand() % 10) / 10) });
+
+	}
 
 	Tile3D windowTile(glm::vec3(0.f, 0.f, 0.f),
 
@@ -59,19 +53,13 @@ void Application::Start() {
 	);
 	windowTile.SetScale(glm::vec3(0.5f, 0.5f, 0.5f));
 	windowTile.Rotate(90.f, glm::vec3(1.f, 0.f, 0.f));
-	std::vector<glm::vec2> windowPosition =
-	{
-		{((float)(rand() % 10) + (float)(rand() % 10) / 10), ((float)(rand() % 10) + (float)(rand() % 10) / 10)},
-		{((float)(rand() % 10) + (float)(rand() % 10) / 10), ((float)(rand() % 10) + (float)(rand() % 10) / 10)},
-		{((float)(rand() % 10) + (float)(rand() % 10) / 10), ((float)(rand() % 10) + (float)(rand() % 10) / 10)},
-		{((float)(rand() % 10) + (float)(rand() % 10) / 10), ((float)(rand() % 10) + (float)(rand() % 10) / 10)},
-		{((float)(rand() % 10) + (float)(rand() % 10) / 10), ((float)(rand() % 10) + (float)(rand() % 10) / 10)},
-		{((float)(rand() % 10) + (float)(rand() % 10) / 10), ((float)(rand() % 10) + (float)(rand() % 10) / 10)},
-		{((float)(rand() % 10) + (float)(rand() % 10) / 10), ((float)(rand() % 10) + (float)(rand() % 10) / 10)},
-		{((float)(rand() % 10) + (float)(rand() % 10) / 10), ((float)(rand() % 10) + (float)(rand() % 10) / 10)},
-		{((float)(rand() % 10) + (float)(rand() % 10) / 10), ((float)(rand() % 10) + (float)(rand() % 10) / 10)},
-		{((float)(rand() % 10) + (float)(rand() % 10) / 10), ((float)(rand() % 10) + (float)(rand() % 10) / 10)}
-	};
+	std::vector<glm::vec2> windowPosition;
+
+	for (int i = 0; i < 10; i++) {
+
+		windowPosition.push_back({ ((float)(rand() % 10) + (float)(rand() % 10) / 10), ((float)(rand() % 10) + (float)(rand() % 10) / 10) });
+
+	}
 
 	float now, deltaTime, timeSinceLastTick = 0.f;
 	while (!window.windowShouldClose()) {

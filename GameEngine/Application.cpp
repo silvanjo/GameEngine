@@ -24,6 +24,54 @@ void Application::Start() {
 		}
 
 	);
+	
+	Tile3D grassTile(glm::vec3(0.f, -1.75f, 0.f),
+
+		std::vector<std::shared_ptr<Texture>>
+		{
+			Application::textures[TEXTURE_TYPES::GRASS]
+		}
+
+	);
+	grassTile.SetScale(glm::vec3(0.2f, 0.2f, 0.2f));
+	grassTile.Rotate(90.f, glm::vec3(1.f, 0.f, 0.f));
+	std::vector<glm::vec2> grassPosition =
+	{
+		{((float) (rand() % 10) + (float) (rand() % 10) / 10), ((float) (rand() % 10) + (float) (rand() % 10) / 10)},
+		{((float) (rand() % 10) + (float) (rand() % 10) / 10), ((float) (rand() % 10) + (float) (rand() % 10) / 10)},
+		{((float) (rand() % 10) + (float) (rand() % 10) / 10), ((float) (rand() % 10) + (float) (rand() % 10) / 10)},
+		{((float) (rand() % 10) + (float) (rand() % 10) / 10), ((float) (rand() % 10) + (float) (rand() % 10) / 10)},
+		{((float) (rand() % 10) + (float) (rand() % 10) / 10), ((float) (rand() % 10) + (float) (rand() % 10) / 10)},
+		{((float) (rand() % 10) + (float) (rand() % 10) / 10), ((float) (rand() % 10) + (float) (rand() % 10) / 10)},
+		{((float) (rand() % 10) + (float) (rand() % 10) / 10), ((float) (rand() % 10) + (float) (rand() % 10) / 10)},
+		{((float) (rand() % 10) + (float) (rand() % 10) / 10), ((float) (rand() % 10) + (float) (rand() % 10) / 10)},
+		{((float) (rand() % 10) + (float) (rand() % 10) / 10), ((float) (rand() % 10) + (float) (rand() % 10) / 10)},
+		{((float) (rand() % 10) + (float) (rand() % 10) / 10), ((float) (rand() % 10) + (float) (rand() % 10) / 10)}
+	};
+
+	Tile3D windowTile(glm::vec3(0.f, 0.f, 0.f),
+
+		std::vector<std::shared_ptr<Texture>>
+		{
+				Application::textures[TEXTURE_TYPES::WINDOW]
+		}
+
+	);
+	windowTile.SetScale(glm::vec3(0.5f, 0.5f, 0.5f));
+	windowTile.Rotate(90.f, glm::vec3(1.f, 0.f, 0.f));
+	std::vector<glm::vec2> windowPosition =
+	{
+		{((float)(rand() % 10) + (float)(rand() % 10) / 10), ((float)(rand() % 10) + (float)(rand() % 10) / 10)},
+		{((float)(rand() % 10) + (float)(rand() % 10) / 10), ((float)(rand() % 10) + (float)(rand() % 10) / 10)},
+		{((float)(rand() % 10) + (float)(rand() % 10) / 10), ((float)(rand() % 10) + (float)(rand() % 10) / 10)},
+		{((float)(rand() % 10) + (float)(rand() % 10) / 10), ((float)(rand() % 10) + (float)(rand() % 10) / 10)},
+		{((float)(rand() % 10) + (float)(rand() % 10) / 10), ((float)(rand() % 10) + (float)(rand() % 10) / 10)},
+		{((float)(rand() % 10) + (float)(rand() % 10) / 10), ((float)(rand() % 10) + (float)(rand() % 10) / 10)},
+		{((float)(rand() % 10) + (float)(rand() % 10) / 10), ((float)(rand() % 10) + (float)(rand() % 10) / 10)},
+		{((float)(rand() % 10) + (float)(rand() % 10) / 10), ((float)(rand() % 10) + (float)(rand() % 10) / 10)},
+		{((float)(rand() % 10) + (float)(rand() % 10) / 10), ((float)(rand() % 10) + (float)(rand() % 10) / 10)},
+		{((float)(rand() % 10) + (float)(rand() % 10) / 10), ((float)(rand() % 10) + (float)(rand() % 10) / 10)}
+	};
 
 	float now, deltaTime, timeSinceLastTick = 0.f;
 	while (!window.windowShouldClose()) {
@@ -46,8 +94,14 @@ void Application::Start() {
 				Renderer::DrawElements(desertTile, *Application::shaders.at(0));
 
 			}
+
+			grassTile.SetPosition(glm::vec3(grassPosition.at(i).x, -1.75f, grassPosition.at(i).y));
+			Renderer::DrawElements(grassTile, *Application::shaders.at(0));
+
+			windowTile.SetPosition(glm::vec3(windowPosition.at(i).x, -1.5f, windowPosition.at(i).y));
+			Renderer::DrawElements(windowTile, *Application::shaders.at(0));
+
 		}
-		
 		
 		for (auto& entity : Application::entities)
 		{

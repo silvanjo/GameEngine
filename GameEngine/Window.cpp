@@ -23,7 +23,16 @@ Window::Window(int width, int height, const std::string& title) :
 	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 	glfwSetCursorPosCallback(window, Camera::mouse_callback);
 	
+	// Enable Depth-testing
 	glEnable(GL_DEPTH_TEST);
+
+	// Blending
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+	// Enable face-culling (counter-clockwise vertices are front-faces)
+	// glEnable(GL_CULL_FACE);
+	// glCullFace(GL_FRONT);
 
 	// Print the current OpenGl version
 	std::cout << "Version: " << glGetString(GL_VERSION) << std::endl;

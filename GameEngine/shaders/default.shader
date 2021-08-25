@@ -120,11 +120,16 @@ vec4 calcPointLight(PointLight pointLight) {
 	float specAmount = pow(max(dot(viewDirection, reflectionDirection), 0.f), 32);
 	float specular = specAmount * specularLight;
 
-	vec4 diffuseLightComponent = texture(material.texture_diffuse0, texCoord) * (diffuse * inten + ambient);
-	diffuseLightComponent.w = 1.f;		// Set Alpha channel back to 1, cause it got changed in line above
+	vec4 diffuseLightComponent = texture(material.texture_diffuse0, texCoord);
+	float alpha = diffuseLightComponent.w;
+	if (alpha < 0.1f) discard;
+	diffuseLightComponent *= (diffuse * inten + ambient);
+	diffuseLightComponent.w = alpha;		// Set Alpha channel back to 1, cause it got changed in line above
 
-	vec4 specularLightComponent = texture(material.texture_specular0, texCoord) * specular * inten;
-	specularLightComponent.w = 1.f;		// Set Alpha channel back to 1, cause it got changed in line above
+	vec4 specularLightComponent = texture(material.texture_specular0, texCoord);
+	alpha = specularLightComponent.w;
+	specularLightComponent *= specular * inten;
+	specularLightComponent.w = alpha;		// Set Alpha channel back to 1, cause it got changed in line above
 
 	return  (diffuseLightComponent + specularLightComponent) * vec4(pointLight.color, 1.f);
 
@@ -148,11 +153,16 @@ vec4 calcDirectLight(DirLight dirLight) {
 	float specAmount = pow(max(dot(viewDirection, reflectionDirection), 0.f), 16);
 	float specular = specAmount * specularLight;
 
-	vec4 diffLightComponent = texture(material.texture_diffuse0, texCoord) * (ambient + diffuse);
-	diffLightComponent.w = 1.f;		// Alpha channel need to be 1
+	vec4 diffLightComponent = texture(material.texture_diffuse0, texCoord);
+	float alpha = diffLightComponent.w;
+	if (alpha < 1.f) discard;
+	diffLightComponent *= ambient + diffuse;
+	diffLightComponent.w = alpha;		// Alpha channel need to be 1
 
-	vec4 specLightComponent = texture(material.texture_specular0, texCoord) * specular;
-	specLightComponent.w = 1.f;
+	vec4 specLightComponent = texture(material.texture_specular0, texCoord);
+	alpha = specLightComponent.w;
+	specLightComponent *= specular;
+	specLightComponent.w = alpha;
 
 	return diffLightComponent + specLightComponent;
 
@@ -183,11 +193,16 @@ vec4 calcSpotLight(SpotLight spotLight) {
 	float angle = dot(spotLight.direction, -lightDirection);
 	float inten = clamp((angle - outerCone) / (innerCone - outerCone), 0.f, 1.f);
 
-	vec4 diffuseLightComponent = texture(material.texture_diffuse0, texCoord) * (diffuse * inten + ambient);
-	diffuseLightComponent.w = 1.f;
+	vec4 diffuseLightComponent = texture(material.texture_diffuse0, texCoord);
+	float alpha = diffuseLightComponent.w;
+	if (alpha < 1.f) discard;
+	diffuseLightComponent *= diffuse * inten + ambient;
+	diffuseLightComponent.w = alpha;
 
-	vec4 specLightComponent = texture(material.texture_specular0, texCoord) * specular * inten;
-	specLightComponent.w = 1.f;
+	vec4 specLightComponent = texture(material.texture_specular0, texCoord);
+	alpha = specLightComponent.w;
+	specLightComponent *= specular * inten;
+	specLightComponent.w = alpha;
 
 	return diffuseLightComponent + specLightComponent;
 

@@ -1,4 +1,5 @@
 #include "Application.h"
+#include "Framebuffer.h"
 
 Application::Application() : 
 	window(1600, 1600, "OpenGL")
@@ -60,6 +61,12 @@ void Application::Start() {
 		windowPosition.push_back({ ((float)(rand() % 10) + (float)(rand() % 10) / 10), ((float)(rand() % 10) + (float)(rand() % 10) / 10) });
 
 	}
+
+	Framebuffer framebuffer(1600, 1600);
+	framebuffer.Bind();
+	if (!framebuffer.Complete())
+		std::cout << "ERROR::Framebuffer not complete" << std::endl;
+	framebuffer.Unbind();
 
 	float now, deltaTime, timeSinceLastTick = 0.f;
 	while (!window.windowShouldClose()) {

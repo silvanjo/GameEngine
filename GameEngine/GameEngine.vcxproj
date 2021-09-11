@@ -76,12 +76,12 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\silva\Desktop\OpenGL\Libs\GLEW\glew-2.1.0\include;C:\Users\silva\Desktop\OpenGL\Libs\GLFW\glfw-3.3.2.bin.WIN32\include;C:\Users\silva\Desktop\OpenGL\Libs\glm\glm;C:\Users\silva\Desktop\OpenGL\Libs\Assimp\assimp;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\GameEngine\Dependencies\Assimp\assimp;$(SolutionDir)\GameEngine\Dependencies\GLEW\include;$(SolutionDir)\GameEngine\Dependencies\GLFW\include;$(SolutionDir)\GameEngine\Dependencies\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions);GLEW_STATIC</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>C:\Users\silva\Desktop\OpenGL\Libs\GLEW\glew-2.1.0\lib\Release\Win32;C:\Users\silva\Desktop\OpenGL\Libs\GLFW\glfw-3.3.2.bin.WIN32\lib-vc2017;C:\Users\silva\Desktop\OpenGL\Libs\Assimp\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3.lib;opengl32.lib;glew32s.lib;assimpd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)\GameEngine\Dependencies\GLEW\lib\Release\Win32;$(SolutionDir)\GameEngine\Dependencies\GLFW\lib-vc2017;$(SolutionDir)\GameEngine\Dependencies\Assimp\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;glew32s.lib;glfw3.lib;assimpd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -90,12 +90,12 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\silva\Desktop\OpenGL\Libs\GLEW\glew-2.1.0\include;C:\Users\silva\Desktop\OpenGL\Libs\GLFW\glfw-3.3.2.bin.WIN32\include;C:\Users\silva\Desktop\OpenGL\Libs\glm\glm;C:\Users\silva\Desktop\OpenGL\Libs\Assimp\assimp;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\GameEngine\Dependencies\Assimp\assimp;$(SolutionDir)\GameEngine\Dependencies\GLEW\include;$(SolutionDir)\GameEngine\Dependencies\GLFW\include;$(SolutionDir)\GameEngine\Dependencies\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions);GLEW_STATIC</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>C:\Users\silva\Desktop\OpenGL\Libs\GLEW\glew-2.1.0\lib\Release\Win32;C:\Users\silva\Desktop\OpenGL\Libs\GLFW\glfw-3.3.2.bin.WIN32\lib-vc2017;C:\Users\silva\Desktop\OpenGL\Libs\Assimp\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3.lib;opengl32.lib;glew32s.lib;assimpd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)\GameEngine\Dependencies\GLEW\lib\Release\Win32;$(SolutionDir)\GameEngine\Dependencies\GLFW\lib-vc2017;$(SolutionDir)\GameEngine\Dependencies\Assimp\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;glew32s.lib;glfw3.lib;assimpd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -106,10 +106,13 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)\GameEngine\Dependencies\Assimp\assimp;$(SolutionDir)\GameEngine\Dependencies\GLEW\include;$(SolutionDir)\GameEngine\Dependencies\GLFW\include;$(SolutionDir)\GameEngine\Dependencies\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(SolutionDir)\GameEngine\Dependencies\GLEW\lib\Release\Win32;$(SolutionDir)\GameEngine\Dependencies\GLFW\lib-vc2017;$(SolutionDir)\GameEngine\Dependencies\Assimp\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;glew32s.lib;glfw3.lib;assimpd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -120,51 +123,51 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)\GameEngine\Dependencies\Assimp\assimp;$(SolutionDir)\GameEngine\Dependencies\GLEW\include;$(SolutionDir)\GameEngine\Dependencies\GLFW\include;$(SolutionDir)\GameEngine\Dependencies\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(SolutionDir)\GameEngine\Dependencies\GLEW\lib\Release\Win32;$(SolutionDir)\GameEngine\Dependencies\GLFW\lib-vc2017;$(SolutionDir)\GameEngine\Dependencies\Assimp\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;glew32s.lib;glfw3.lib;assimpd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Application.cpp" />
-    <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="Cube.cpp" />
-    <ClCompile Include="EBO.cpp" />
-    <ClCompile Include="Entity.cpp" />
-    <ClCompile Include="Framebuffer.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="Mesh.cpp" />
-    <ClCompile Include="Model.cpp" />
-    <ClCompile Include="Renderer.cpp" />
-    <ClCompile Include="Shader.cpp" />
-    <ClCompile Include="stb_image.cpp" />
-    <ClCompile Include="Texture.cpp" />
-    <ClCompile Include="Tile3D.cpp" />
-    <ClCompile Include="VAO.cpp" />
-    <ClCompile Include="VBO.cpp" />
-    <ClCompile Include="Window.cpp" />
+    <ClCompile Include="src\Application.cpp" />
+    <ClCompile Include="src\Camera.cpp" />
+    <ClCompile Include="src\Cube.cpp" />
+    <ClCompile Include="src\EBO.cpp" />
+    <ClCompile Include="src\Entity.cpp" />
+    <ClCompile Include="src\Framebuffer.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Mesh.cpp" />
+    <ClCompile Include="src\Model.cpp" />
+    <ClCompile Include="src\Renderer.cpp" />
+    <ClCompile Include="src\Shader.cpp" />
+    <ClCompile Include="src\stb_image.cpp" />
+    <ClCompile Include="src\Texture.cpp" />
+    <ClCompile Include="src\Tile3D.cpp" />
+    <ClCompile Include="src\VAO.cpp" />
+    <ClCompile Include="src\VBO.cpp" />
+    <ClCompile Include="src\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Application.h" />
-    <ClInclude Include="Camera.h" />
-    <ClInclude Include="Cube.h" />
-    <ClInclude Include="EBO.h" />
-    <ClInclude Include="Entity.h" />
-    <ClInclude Include="Framebuffer.h" />
-    <ClInclude Include="Mesh.h" />
-    <ClInclude Include="Model.h" />
-    <ClInclude Include="Renderer.h" />
-    <ClInclude Include="Shader.h" />
-    <ClInclude Include="stb_image.h" />
-    <ClInclude Include="Texture.h" />
-    <ClInclude Include="Tile3D.h" />
-    <ClInclude Include="VAO.h" />
-    <ClInclude Include="VBO.h" />
-    <ClInclude Include="Window.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="assimpd.dll" />
+    <ClInclude Include="src\Application.h" />
+    <ClInclude Include="src\Camera.h" />
+    <ClInclude Include="src\Cube.h" />
+    <ClInclude Include="src\EBO.h" />
+    <ClInclude Include="src\Entity.h" />
+    <ClInclude Include="src\Framebuffer.h" />
+    <ClInclude Include="src\Mesh.h" />
+    <ClInclude Include="src\Model.h" />
+    <ClInclude Include="src\Renderer.h" />
+    <ClInclude Include="src\Shader.h" />
+    <ClInclude Include="src\stb_image.h" />
+    <ClInclude Include="src\Texture.h" />
+    <ClInclude Include="src\Tile3D.h" />
+    <ClInclude Include="src\VAO.h" />
+    <ClInclude Include="src\VBO.h" />
+    <ClInclude Include="src\Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

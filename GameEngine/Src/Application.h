@@ -31,11 +31,17 @@ class Application
 public:
 	Application();
 
+	void InitScene();
+
+	void DrawScene();
+
 	void Start();
 
 private:
 	Window window;
 	Camera camera;
+
+	Framebuffer framebuffer;
 
 	std::vector<std::shared_ptr<Shader>> shaders;
 	std::vector<std::shared_ptr<Entity>> entities;

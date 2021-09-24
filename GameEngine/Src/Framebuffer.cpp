@@ -9,29 +9,42 @@ Framebuffer::Framebuffer(unsigned int width, unsigned int height)
 
 	glGenFramebuffers(1, &ID);
 
-	// Create Texture for the framebuffer
-	glGenTextures(1, &(Framebuffer::texture));
-	glBindTexture(GL_TEXTURE_2D, Framebuffer::texture);
+	BindFramebuffer();
 
-	// Allocate memory for framebuffer
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, nullptr);
+	// Create and attach color buffer
 
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		// Create Texture for the framebuffer
+		glGenTextures(1, &(Framebuffer::color_texture));
+		glBindTexture(GL_TEXTURE_2D, Framebuffer::color_texture);
 
-	glBindTexture(GL_TEXTURE_2D, 0);
+		// Allocate memory for color buffer
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, nullptr);
 
-	// Attach color-texture to framebuffer 
-	glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, Framebuffer::texture, 0);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-	// Allocate memory for depth and stencil buffer
-	glTexImage2D(
-		GL_TEXTURE_2D, 0, GL_DEPTH24_STENCIL8, width, height, 0,
-		GL_DEPTH_STENCIL, GL_UNSIGNED_INT_24_8, nullptr
-	);
+		// Attach color-texture to framebuffer 
+		glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, color_texture, 0);
 
-	// Attach depth and stencil-buffer to the framebuffer
-	glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_TEXTURE_2D, texture, 0);
+		glBindTexture(GL_TEXTURE_2D, 0);
+	
+	
+	// ----------------------------------
+
+	// Create and attach depth and stencil buffer
+
+		glGenRenderbuffers(1, &render_buffer);
+		glBindRenderbuffer(GL_RENDERBUFFER, render_buffer);
+		glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, width, height);									// Allocate memory for the renderbuffer
+
+		glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, render_buffer);		// Attach renderbuffer to the currently bound framebuffer
+
+		glBindRenderbuffer(GL_RENDERBUFFER, 0);
+
+	// ----------------------------------
+
+	UnbindFramebuffer();
+	
 }
 
 
@@ -40,15 +53,33 @@ Framebuffer::~Framebuffer()
 	glDeleteFramebuffers(1, &ID);
 }
 
-void Framebuffer::Bind() {
+void Framebuffer::BindFramebuffer() {
 	glBindFramebuffer(GL_FRAMEBUFFER, ID);
 }
 
-void Framebuffer::Unbind() {
+void Framebuffer::UnbindFramebuffer() {
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }
 
+void Framebuffer::BindColorTexture()
+{
+	glBindTexture(GL_TEXTURE_2D, color_texture);
+}
+
+void Framebuffer::UnBindColorTexture()
+{
+	glBindTexture(GL_TEXTURE_2D, 0);
+}
+
 // Returns true of the framebuffer is complete
-bool Framebuffer::Complete() {
-	return glCheckFramebufferStatus(GL_FRAMEBUFFER) == GL_FRAMEBUFFER_COMPLETE;
+bool Framebuffer::IsComplete() {
+	BindFramebuffer();
+	bool complete = glCheckFramebufferStatus(GL_FRAMEBUFFER) == GL_FRAMEBUFFER_COMPLETE;
+	UnbindFramebuffer();
+	return complete;
+}
+
+GLenum Framebuffer::GetFramebufferStatus()
+{
+	return glCheckFramebufferStatus(GL_FRAMEBUFFER);
 }

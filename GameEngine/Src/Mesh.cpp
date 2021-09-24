@@ -13,7 +13,7 @@ Mesh::Mesh(std::vector<Vertex>& vertices, std::vector<GLuint>& indices, std::vec
 	Mesh::vertices = vertices;
 	Mesh::indices = indices;
 	Mesh::textures = textures;
-	
+
 	createMesh();
 
 }
@@ -33,9 +33,11 @@ void Mesh::createMesh() {
 
 	VAO.Bind();
 
-	VBO VBO(vertices);
+	VBO.CreateVBO(vertices);
+	EBO.CreateEBO(indices);
 
-	EBO EBO(indices);
+	VBO.Bind();
+	EBO.Bind();
 
 	VAO.LinkAttrib(VBO, 0, 3, GL_FLOAT, sizeof(Vertex), (void*)0);
 	VAO.LinkAttrib(VBO, 1, 3, GL_FLOAT, sizeof(Vertex), (void*)(3 * sizeof(float)));

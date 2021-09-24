@@ -9,7 +9,8 @@ struct ShaderProgramSource {
 	std::string VertexSource, FragmentSource;
 };
 
-class Shader {
+class Shader 
+{
 private:
 	std::string m_Filepath;
 	unsigned int m_RendererID;
@@ -35,9 +36,14 @@ private:
 	unsigned int GetUniformLocation(const std::string& name);
 };
 
-class BaseShader : public Shader {
-
+class BaseShader : public Shader 
+{
 public:
 	BaseShader();
+};
 
+class FramebufferShader : public Shader
+{
+public:
+	FramebufferShader();
 };

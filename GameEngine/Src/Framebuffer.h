@@ -8,14 +8,20 @@ public:
 	Framebuffer(unsigned int width, unsigned int height);
 	~Framebuffer();
 
-	void Bind();
-	void Unbind();
+	void BindFramebuffer();
+	void UnbindFramebuffer();
 
-	bool Complete();
+	void BindColorTexture();
+	void UnBindColorTexture();
+
+	bool IsComplete();
+
+	GLenum GetFramebufferStatus();
 
 private:
 	GLuint ID;
-	GLuint texture;
+	GLuint color_texture;			// color attachment
+	GLuint render_buffer;			// buffer for depth and stencil data
 
 	unsigned int width;
 	unsigned int height;

@@ -8,7 +8,8 @@
 #include <iostream>
 
 
-void Renderer::DrawElements(Entity& entity, Shader& shader) {
+void Renderer::DrawElements(Entity& entity, Shader& shader) 
+{
 
 	std::vector<std::shared_ptr<Mesh>>* meshes = &entity.meshes;
 
@@ -25,7 +26,7 @@ void Renderer::DrawElements(Entity& entity, Shader& shader) {
 			unsigned int numDiffuse = 0;
 			unsigned int numSpecular = 0;
 
-			// Biding textures of th emodel
+			// Biding textures of th model
 			for (unsigned int i = 0; i < mesh->textures.size(); i++) {
 				std::string num;
 				std::string type = mesh->textures[i]->getTextureType();
@@ -57,6 +58,8 @@ void Renderer::DrawElements(Entity& entity, Shader& shader) {
 
 }
 
-void Renderer::DrawArrays(Entity& mesh, Shader& shader) {
+void Renderer::DrawArrays(Entity& mesh, Shader& shader) 
+{
+
 
 }

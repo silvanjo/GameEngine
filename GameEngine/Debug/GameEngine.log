@@ -1,5 +1,9 @@
-﻿  Renderer.cpp
-c:\users\silvan josten\desktop\repo\gameengine\gameengine\src\renderer.cpp(18): warning C4018: "<": Konflikt zwischen "signed" und "unsigned"
+﻿  Application.cpp
+c:\users\silvan josten\desktop\repo\gameengine\gameengine\src\application.cpp(53): warning C4244: "=": Konvertierung von "double" in "float", möglicher Datenverlust
+  Renderer.cpp
+c:\users\silvan josten\desktop\repo\gameengine\gameengine\src\renderer.cpp(19): warning C4018: "<": Konflikt zwischen "signed" und "unsigned"
+  main.cpp
+  Code wird generiert...
 LINK : warning LNK4098: Standardbibliothek "LIBCMT" steht in Konflikt mit anderen Bibliotheken; /NODEFAULTLIB:Bibliothek verwenden.
 LINK : warning LNK4098: Standardbibliothek "MSVCRT" steht in Konflikt mit anderen Bibliotheken; /NODEFAULTLIB:Bibliothek verwenden.
 glew32s.lib(glew.obj) : warning LNK4099: PDB "vc120.pdb" wurde nicht mit "glew32s.lib(glew.obj)" oder an "C:\Users\Silvan Josten\Desktop\REPO\GameEngine\Debug\vc120.pdb" gefunden; Objekt wird verkn³pft, als ob keine Debuginformationen vorhanden wõren.

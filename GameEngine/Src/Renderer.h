@@ -2,6 +2,7 @@
 
 #include "Mesh.h"
 #include "Model.h"
+#include "Framebuffer.h"
 
 class Renderer
 {

@@ -21,6 +21,8 @@ public:
 	std::vector<std::shared_ptr<Texture>> textures;
 
 	VAO VAO;
+	VBO VBO;
+	EBO EBO;
 
 	void createMesh();
 };

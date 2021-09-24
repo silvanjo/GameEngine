@@ -27,8 +27,13 @@ Camera::~Camera() {
 }
 
 void Camera::Update(GLFWwindow* window, float deltaTime, std::vector<std::shared_ptr<Shader>>& shaders) {
+	bool dirty = false;
 	for (std::shared_ptr<Shader>& shader : shaders) {
-		
+
+		if (dirty)
+			break;
+		dirty = true;
+
 		shader->Bind();
 
 		shader->SetUniformMat4f("proj", Camera::proj);

@@ -9,5 +9,5 @@ public:
 	Tile3D(glm::vec3 position, std::vector<std::shared_ptr<Texture>>&& textures);
 
 private:
-	void createMesh(std::vector<std::shared_ptr<Texture>>& textures);
+	void CreateMesh(std::vector<std::shared_ptr<Texture>>& textures);
 };

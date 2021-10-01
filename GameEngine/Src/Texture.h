@@ -5,10 +5,10 @@
 
 class Texture{
 private:
-	unsigned int m_RendererID;
-	std::string m_FilePath;
-	unsigned char* m_LocalBuffer;
-	int m_Width, m_Height, m_BPP;
+	unsigned int ID;
+	std::string filepath;
+	unsigned char* data_image;
+	int width, height, BPP;
 
 	std::string textureType;
 

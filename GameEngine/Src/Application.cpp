@@ -46,6 +46,18 @@ void Application::Start() {
 
 	InitScene();
 
+	std::vector<std::string> cubemap_faces =
+	{
+		"Skybox/Sky/right.jpg",
+		"Skybox/Sky/left.jpg",
+		"Skybox/Sky/top.jpg",
+		"Skybox/Sky/bottom.jpg",
+		"Skybox/Sky/front.jpg",
+		"Skybox/Sky/back.jpg",
+	};
+
+	Cubemap cubemap(cubemap_faces);
+
 	float now, deltaTime = 0.f, timeSinceLastTick = 0.f;
 	while (!window.windowShouldClose()) {
 		camera.Update(window.getWindow(), deltaTime, shaders);

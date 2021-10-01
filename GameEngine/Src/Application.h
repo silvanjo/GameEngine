@@ -12,6 +12,7 @@
 #include "Application.h"
 #include "Renderer.h"
 #include "Model.h"
+#include "Cubemap.h"
 
 #include <map>
 

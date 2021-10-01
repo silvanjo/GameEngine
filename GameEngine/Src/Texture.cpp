@@ -6,14 +6,14 @@
 #include <iostream>
 
 Texture::Texture(const std::string& path, const std::string& type)
-	: m_RendererID(0), m_FilePath(path), m_LocalBuffer(nullptr), m_Width(0), m_Height(0), m_BPP(0), textureType(type) {
+	: ID(0), filepath(path), data_image(nullptr), width(0), height(0), BPP(0), textureType(type) {
 
 	stbi_set_flip_vertically_on_load(1);
-	m_LocalBuffer = stbi_load(path.c_str(), &m_Width, &m_Height, &m_BPP, 0);
+	data_image = stbi_load(path.c_str(), &width, &height, &BPP, 0);
 
-	if (m_LocalBuffer) {
-		glGenTextures(1, &m_RendererID);
-		glBindTexture(GL_TEXTURE_2D, m_RendererID);
+	if (data_image) {
+		glGenTextures(1, &ID);
+		glBindTexture(GL_TEXTURE_2D, ID);
 
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
@@ -21,30 +21,30 @@ Texture::Texture(const std::string& path, const std::string& type)
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 
 		GLenum format;
-		if (m_BPP == 1)
+		if (BPP == 1)
 			format = GL_RED;
-		else if (m_BPP == 3)
+		else if (BPP == 3)
 			format = GL_RGB;
-		else if (m_BPP == 4)
+		else if (BPP == 4)
 			format = GL_RGBA;
 
-		glTexImage2D(GL_TEXTURE_2D, 0, format, m_Width, m_Height, 0, format, GL_UNSIGNED_BYTE, m_LocalBuffer);
+		glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data_image);
 		glBindTexture(GL_TEXTURE_2D, 0);
 	}
 	else {
 		std::cout << "Texture failed to loadt at path: " << path << std::endl;
 	}
 
-	stbi_image_free(m_LocalBuffer);
+	stbi_image_free(data_image);
  }
 
 Texture::~Texture() {
-	glDeleteTextures(1, &m_RendererID);
+	glDeleteTextures(1, &ID);
 }
 
 void Texture::Bind(unsigned int slot) const {
 	glActiveTexture(GL_TEXTURE0 + slot);
-	glBindTexture(GL_TEXTURE_2D, m_RendererID);
+	glBindTexture(GL_TEXTURE_2D, ID);
 }
 
 void Texture::UnBind() const {
@@ -56,5 +56,5 @@ const std::string& Texture::getTextureType() const {
 }
 
 const std::string& Texture::getFilePath() const {
-	return this->m_FilePath;
+	return this->filepath;
 }

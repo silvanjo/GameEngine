@@ -63,6 +63,9 @@
     <ClCompile Include="src\Window.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="Src\CubemapTexture.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
     <ClCompile Include="Src\Cubemap.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
@@ -113,8 +116,14 @@
     <ClInclude Include="src\Window.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="Src\CubemapTexture.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
     <ClInclude Include="Src\Cubemap.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Shaders\CubemapShader.shader" />
   </ItemGroup>
 </Project>

@@ -2,6 +2,12 @@
 
 #include <iostream>
 
+Model::Model() :
+	Entity(glm::vec3(0.f, 0.f, 0.f))
+{
+
+}
+
 Model::Model(glm::vec3 position) :
 	Entity(position)
 {
@@ -11,14 +17,14 @@ Model::Model(glm::vec3 position) :
 Model::Model(char* path, glm::vec3 position) :
 	Entity(position)
 {
-	loadModel(path);
+	LoadModel(path);
 }
 
 Model::~Model() {
 	
 }
 
-void Model::loadModel(const std::string& path) {
+void Model::LoadModel(const std::string& path) {
 	// read file via ASSIMP
 	Assimp::Importer importer;
 	const aiScene* scene = importer.ReadFile(path, aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs | aiProcess_CalcTangentSpace);

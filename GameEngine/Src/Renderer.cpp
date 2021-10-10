@@ -1,5 +1,6 @@
 #include "Renderer.h"
 
+#include <GL/glew.h>
 
 #include <glm.hpp>
 #include <gtc/matrix_transform.hpp>
@@ -48,7 +49,7 @@ void Renderer::DrawElements(Entity& entity, Shader& shader)
 
 				glDrawElements(GL_TRIANGLES, mesh->indices.size(), GL_UNSIGNED_INT, nullptr);
 
-			mesh->VAO.Bind();
+			mesh->VBO.Bind();
 
 		shader.UnBind();
 
@@ -61,5 +62,17 @@ void Renderer::DrawElements(Entity& entity, Shader& shader)
 void Renderer::DrawArrays(Entity& mesh, Shader& shader) 
 {
 
+}
 
+void Renderer::DrawCubemap(Cubemap& cubemap, Shader& shader)
+{
+	glDepthMask(GL_FALSE);
+	shader.Bind();
+		cubemap.cube.meshes.at(0)->VAO.Bind();
+		cubemap.texture.Bind();
+		glDrawElements(GL_TRIANGLES, cubemap.cube.meshes.at(0)->indices.size(), GL_UNSIGNED_INT, nullptr);
+		cubemap.texture.UnBind();
+		cubemap.cube.meshes.at(0)->VAO.Unbind();
+	shader.UnBind();
+	glDepthMask(GL_TRUE);
 }

@@ -12,6 +12,12 @@ Shader::Shader(const std::string& filepath)
 	ShaderProgramSource source = ParseShader(filepath);
 	m_RendererID = CreateShader(source.VertexSource, source.FragmentSource);
 
+	hasModel = true;
+	hasView  = true;
+	hasProjection = true;
+
+	type = ShaderType::SHADER;
+
 }
 
 Shader::~Shader() 
@@ -140,7 +146,7 @@ unsigned int Shader::GetUniformLocation(const std::string& name)
 }
 
 BaseShader::BaseShader() :
-	Shader("Shaders/default.shader")
+	Shader("Shaders/Default.shader")
 {
 
 	Shader::Bind();
@@ -171,10 +177,23 @@ BaseShader::BaseShader() :
 
 	Shader::UnBind();
 
+	type = ShaderType::BASE_SHADER;
 }
 
 FramebufferShader::FramebufferShader() :
-	Shader("Shaders/framebufferShader.shader")
+	Shader("Shaders/FramebufferShader.shader")
 {
+	hasModel = false;
+	hasView  = false;
+	hasProjection = false;
 
+	type = ShaderType::FRAMEBUFFER_SHADER;
+}
+
+CubemapShader::CubemapShader() :
+	Shader("Shaders/CubemapShader.shader")
+{
+	hasModel = false;
+
+	type = ShaderType::CUBEMAP_SHADER;
 }

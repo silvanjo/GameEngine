@@ -1,8 +1,2 @@
-﻿  Camera.cpp
-c:\users\silvan josten\desktop\repo\gameengine\gameengine\src\camera.cpp(77): warning C4244: "=": Konvertierung von "double" in "float", möglicher Datenverlust
-c:\users\silvan josten\desktop\repo\gameengine\gameengine\src\camera.cpp(78): warning C4244: "=": Konvertierung von "double" in "float", möglicher Datenverlust
-c:\users\silvan josten\desktop\repo\gameengine\gameengine\src\camera.cpp(82): warning C4244: "Initialisierung": Konvertierung von "double" in "float", möglicher Datenverlust
-c:\users\silvan josten\desktop\repo\gameengine\gameengine\src\camera.cpp(83): warning C4244: "Initialisierung": Konvertierung von "double" in "float", möglicher Datenverlust
-c:\users\silvan josten\desktop\repo\gameengine\gameengine\src\camera.cpp(84): warning C4244: "=": Konvertierung von "double" in "float", möglicher Datenverlust
-c:\users\silvan josten\desktop\repo\gameengine\gameengine\src\camera.cpp(85): warning C4244: "=": Konvertierung von "double" in "float", möglicher Datenverlust
+﻿  CubemapTexture.cpp
   GameEngine.vcxproj -> C:\Users\Silvan Josten\Desktop\REPO\GameEngine\Debug\GameEngine.exe

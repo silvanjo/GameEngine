@@ -9,13 +9,14 @@
 class Model : public Entity
 {
 public:
+	Model();
 	Model(glm::vec3 position);
 	Model(char *path, glm::vec3 position);
 	~Model();
 
 public:
 
-	void loadModel(const std::string& path);
+	void LoadModel(const std::string& path);
 
 protected:
 	std::vector<std::shared_ptr<Texture>> texturesLoaded;

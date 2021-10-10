@@ -27,17 +27,19 @@ Camera::~Camera() {
 }
 
 void Camera::Update(GLFWwindow* window, float deltaTime, std::vector<std::shared_ptr<Shader>>& shaders) {
-	bool dirty = false;
 	for (std::shared_ptr<Shader>& shader : shaders) {
-
-		if (dirty)
-			break;
-		dirty = true;
 
 		shader->Bind();
 
-		shader->SetUniformMat4f("proj", Camera::proj);
-		shader->SetUniformMat4f("view", Camera::view);
+		if(shader->hasProjection)
+			shader->SetUniformMat4f("proj", proj);
+		
+		if(shader->hasView && !(shader->type == ShaderType::CUBEMAP_SHADER))
+			shader->SetUniformMat4f("view", view);
+		
+		// Get rid of the translation part of the view matrix for the CubemapShader
+		if (shader->type == ShaderType::CUBEMAP_SHADER)
+			shader->SetUniformMat4f("view", glm::mat4(glm::mat3(view)));
 
 		shader->UnBind();
 	

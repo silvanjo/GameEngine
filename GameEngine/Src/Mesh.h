@@ -20,9 +20,9 @@ public:
 	std::vector<GLuint> indices;
 	std::vector<std::shared_ptr<Texture>> textures;
 
+	void createMesh();
+
 	VAO VAO;
 	VBO VBO;
 	EBO EBO;
-
-	void createMesh();
 };

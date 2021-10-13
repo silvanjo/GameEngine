@@ -151,6 +151,7 @@
     <ClCompile Include="src\VAO.cpp" />
     <ClCompile Include="src\VBO.cpp" />
     <ClCompile Include="src\Window.cpp" />
+    <ClCompile Include="Src\UniformBuffer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Cubemap.h" />
@@ -170,6 +171,7 @@
     <ClInclude Include="src\VAO.h" />
     <ClInclude Include="src\VBO.h" />
     <ClInclude Include="src\Window.h" />
+    <ClInclude Include="Src\UniformBuffer.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Shaders\CubemapShader.shader" />

@@ -20,6 +20,16 @@ void Application::InitScene()
 	entities.push_back(std::make_shared<Model>((char*) "Assets/Models/Sphere/Sphere.obj", glm::vec3(2.f, 3.f, -3.f)));
 	
 	entities.push_back(std::make_shared<Tile3D>(glm::vec3(0.f, 0.f, 0.f), std::vector<std::shared_ptr<Texture>>{std::make_shared<Texture>("Assets/Models/Sphere/diffuse.png")}));
+
+	for (std::shared_ptr<Shader> shader : shaders)
+	{
+		shader->BindUniformBlock("Matrices", 0);
+	}
+
+	bufferProjView.CreateUniformBuffer(2 * sizeof(glm::mat4));
+	bufferProjView.BindBufferRange(0, 0, 2 * sizeof(glm::mat4));
+
+	bufferProjView.BufferSubData(0, sizeof(glm::mat4), glm::value_ptr(camera.GetProjection()));
 }
 
 void Application::DrawScene()
@@ -28,6 +38,11 @@ void Application::DrawScene()
 	{
 		Renderer::DrawElements(*entity, *Application::shaders.at(0));
 	}
+}
+
+void Application::UpdateShader()
+{
+	bufferProjView.BufferSubData(sizeof(glm::mat4), sizeof(glm::mat4), glm::value_ptr(camera.GetView()));
 }
 
 void Application::Start() {
@@ -53,7 +68,9 @@ void Application::Start() {
 
 	float now, deltaTime = 0.f, timeSinceLastTick = 0.f;
 	while (!window.windowShouldClose()) {
-		camera.Update(window.getWindow(), deltaTime, shaders);
+		camera.Update(window.getWindow(), deltaTime);
+
+		UpdateShader();
 		
 		now = glfwGetTime();
 		deltaTime = now - timeSinceLastTick;

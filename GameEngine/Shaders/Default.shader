@@ -5,15 +5,20 @@ layout (location = 0) in vec3 aPos;
 layout (location = 1) in vec3 aNormal;
 layout (location = 2) in vec2 aTex;
 
+layout(std140) uniform Matrices
+{
+	uniform mat4 proj;
+	uniform mat4 view;
+};
+
 uniform mat4 model;
-uniform mat4 view;
-uniform mat4 proj;
 
 out vec3 FragPos;
 out vec3 normal;
 out vec2 texCoord;
 
-void main() {
+void main() 
+{
 
 	FragPos = vec3(model * vec4(aPos, 1.f));
 	gl_Position = proj * view * model * vec4(aPos, 1.f);
@@ -25,14 +30,16 @@ void main() {
 #shader fragment
 #version 330 core
 
-struct Material {
+struct Material 
+{
 
 	sampler2D texture_diffuse0;
 	sampler2D texture_specular0;
 
 };
 
-struct PointLight {
+struct PointLight 
+{
 
 	vec3 position;
 	vec3 color;
@@ -46,7 +53,8 @@ struct PointLight {
 
 };
 
-struct DirLight {
+struct DirLight 
+{
 
 	vec3 direction;
 	
@@ -56,7 +64,8 @@ struct DirLight {
 
 };
 
-struct SpotLight {
+struct SpotLight 
+{
 
 	vec3 position;
 	vec3 direction;
@@ -87,13 +96,15 @@ uniform DirLight dirLight;
 uniform PointLight pointLight;
 uniform SpotLight spotLight;
 
-void main() {
+void main() 
+{
 
 	FragColor = calcPointLight(pointLight);
 
 }
 
-vec4 calcPointLight(PointLight pointLight) {
+vec4 calcPointLight(PointLight pointLight) 
+{
 
 	vec3 lightVec = pointLight.position - FragPos;
 
@@ -134,7 +145,8 @@ vec4 calcPointLight(PointLight pointLight) {
 
 }
 
-vec4 calcDirectLight(DirLight dirLight) {
+vec4 calcDirectLight(DirLight dirLight) 
+{
 
 	// ambient
 	float ambient = dirLight.ambient;
@@ -167,7 +179,8 @@ vec4 calcDirectLight(DirLight dirLight) {
 
 }
 
-vec4 calcSpotLight(SpotLight spotLight) {
+vec4 calcSpotLight(SpotLight spotLight) 
+{
 
 	float outerCone = spotLight.outerCone;
 	float innerCone = spotLight.innerCone;

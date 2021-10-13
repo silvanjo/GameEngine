@@ -6,23 +6,18 @@
 #include <GL/glew.h>
 
 Shader::Shader(const std::string& filepath)
-	: m_Filepath(filepath), m_RendererID(0) 
+	: filepath(filepath), ID(0) 
 {
 
 	ShaderProgramSource source = ParseShader(filepath);
-	m_RendererID = CreateShader(source.VertexSource, source.FragmentSource);
-
-	hasModel = true;
-	hasView  = true;
-	hasProjection = true;
-
+	ID = CreateShader(source.VertexSource, source.FragmentSource);
 	type = ShaderType::SHADER;
 
 }
 
 Shader::~Shader() 
 {
-	glDeleteProgram(m_RendererID);
+	glDeleteProgram(ID);
 }
 
 ShaderProgramSource Shader::ParseShader(const std::string& filepath) 
@@ -72,7 +67,7 @@ unsigned int Shader::CreateShader(const std::string& vertexShader, const std::st
 
 unsigned int Shader::CompileShader(unsigned int type, const std::string& source) 
 {
-	unsigned int id = glCreateShader(type);
+	GLuint id = glCreateShader(type);
 	const char* src = source.c_str();
 	glShaderSource(id, 1, &src, nullptr);
 	glCompileShader(id);
@@ -99,7 +94,7 @@ unsigned int Shader::CompileShader(unsigned int type, const std::string& source)
 
 void Shader::Bind() const 
 {
-	glUseProgram(m_RendererID);
+	glUseProgram(ID);
 }
 
 void Shader::UnBind() const 
@@ -127,7 +122,7 @@ void Shader::SetUniform4f(const std::string& name, float v0, float v1, float v2,
 	glUniform4f(GetUniformLocation(name), v0, v1, v2, v3);
 }
 
-void Shader::SetUniformMat4f(const std::string&name, const glm::mat4& matrix) 
+void Shader::SetUniformMat4f(const std::string& name, const glm::mat4& matrix) 
 {
 	glUniformMatrix4fv(GetUniformLocation(name), 1, GL_FALSE, &matrix[0][0]);
 }
@@ -137,12 +132,20 @@ unsigned int Shader::GetUniformLocation(const std::string& name)
 	if (m_UniformLocationCache.find(name) != m_UniformLocationCache.end())
 		return m_UniformLocationCache[name];
 	
-	int location = glGetUniformLocation(m_RendererID, name.c_str());
+	int location = glGetUniformLocation(ID, name.c_str());
+
 	if (location == -1)
 		std::cout << "Warning: uniform '" << name << "' doesn't exist!" << std::endl;
 	else
 		m_UniformLocationCache[name] = location;
+
 	return location;
+}
+
+void Shader::BindUniformBlock(const std::string& block_name, unsigned int binding_point)
+{
+	unsigned int uniformBlockIndex = glGetUniformBlockIndex(ID, block_name.c_str());
+	glUniformBlockBinding(ID, uniformBlockIndex, binding_point);
 }
 
 BaseShader::BaseShader() :
@@ -183,17 +186,11 @@ BaseShader::BaseShader() :
 FramebufferShader::FramebufferShader() :
 	Shader("Shaders/FramebufferShader.shader")
 {
-	hasModel = false;
-	hasView  = false;
-	hasProjection = false;
-
 	type = ShaderType::FRAMEBUFFER_SHADER;
 }
 
 CubemapShader::CubemapShader() :
 	Shader("Shaders/CubemapShader.shader")
 {
-	hasModel = false;
-
 	type = ShaderType::CUBEMAP_SHADER;
 }

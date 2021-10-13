@@ -1,9 +1,9 @@
 #pragma once
 
+#include <glm.hpp>
+
 #include <string>
 #include <unordered_map>
-
-#include "glm.hpp"
 
 enum class ShaderType
 {
@@ -20,8 +20,8 @@ struct ShaderProgramSource {
 class Shader 
 {
 private:
-	std::string m_Filepath;
-	unsigned int m_RendererID;
+	std::string filepath;
+	unsigned int ID;
 	std::unordered_map<std::string, int> m_UniformLocationCache;
 public:
 	Shader(const std::string& filepath);
@@ -37,9 +37,7 @@ public:
 	void SetUniform4f(const std::string& name, float v0, float v1, float v2, float v3);
 	void SetUniformMat4f(const std::string& name, const glm::mat4& mat);
 
-	bool hasModel;
-	bool hasView;
-	bool hasProjection;
+	void BindUniformBlock(const std::string& block_name, unsigned int binding_point);
 
 	ShaderType type;
 
